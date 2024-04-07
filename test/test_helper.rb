@@ -11,5 +11,13 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    def create_user_session(user = nil)
+      post sign_in_path, params: { email: user.email, password: "topsecret" }
+      follow_redirect!
+    end
+
+    def destry_user_session
+      # @controller.send(:destroy_session)
+    end
   end
 end
